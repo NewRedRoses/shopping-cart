@@ -20,3 +20,26 @@
 .logo:hover {
   transform: rotate(360deg);
 }
+.btn {
+  width: 200px;
+  padding: 5px;
+  font-family: "Inter";
+  font-weight: 500;
+  background-color: #b2bec3;
+  color: #2d3436;
+  height: fit-content;
+  border-radius: 7px;
+  border: unset;
+  font-size: 1.5rem;
+  position: relative;
+  transition: background-color 300ms ease-in-out;
+}
+.btn:hover {
+  background-color: #2d3436;
+  color: #b2bec3;
+
+  transition: background-color 300ms ease-in-out;
+}
+.btn:active {
+  top: 3px;
+}
