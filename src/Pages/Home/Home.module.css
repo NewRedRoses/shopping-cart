@@ -22,14 +22,14 @@
 }
 .btn {
   width: 200px;
+  height: fit-content;
   padding: 5px;
-  font-family: "Inter";
-  font-weight: 500;
   background-color: #b2bec3;
   color: #2d3436;
-  height: fit-content;
-  border-radius: 7px;
   border: unset;
+  border-radius: 7px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
   font-size: 1.5rem;
   position: relative;
   transition: background-color 300ms ease-in-out;
