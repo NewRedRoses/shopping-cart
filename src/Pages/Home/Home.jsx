@@ -7,7 +7,6 @@ const Home = () => {
     <>
       <Header />
       <div className={styles.content}>
-        {/* @TODO: Figure out why this component doesnt take the css module */}
         <Logo className={styles.logo} />
         <h1 className={styles.greeting}>Welcome to the Elegant Mock Store</h1>
         <Link to="All_items">
