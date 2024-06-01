@@ -9,6 +9,7 @@
   padding: 10px;
 }
 .imgContainer {
+  flex: 1;
   width: 300px;
   height: auto;
 }
@@ -24,6 +25,7 @@ ul {
 }
 .name {
   font-size: 1.2rem;
+  color: #2d3436;
   font-family: Inter;
   font-weight: 600;
 }
@@ -33,4 +35,5 @@ ul {
 }
 .priceContainer {
   font-weight: 500;
+  color: #2d3436;
 }

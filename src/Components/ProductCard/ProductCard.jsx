@@ -2,7 +2,7 @@ import styles from "./ProductCard.module.css";
 const ProductCard = ({ imgUrl, name, price }) => {
   return (
     <div className={styles.cardContainer}>
-      <div className="imgContainer">
+      <div className={styles.imgContainer}>
         <img className={styles.productImg} src={imgUrl} alt="" />
       </div>
       <h2 className={styles.name}>{name}</h2>
