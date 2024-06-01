@@ -35,5 +35,6 @@ ul {
 }
 .priceContainer {
   font-weight: 500;
+  font-family: Inter;
   color: #2d3436;
 }
