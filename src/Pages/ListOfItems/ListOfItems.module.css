@@ -1,0 +1,13 @@
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 10px;
+}
+.mainText {
+  font-size: 3rem;
+  color: #2d3436;
+  font-family: Judson;
+  font-weight: 500;
+  border-bottom: 1px solid black;
+}
