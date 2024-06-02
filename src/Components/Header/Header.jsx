@@ -9,7 +9,9 @@ const Header = () => {
         <Logo />
       </Link>
 
-      <ShoppingCart color="#2D3436" />
+      <Link to="/Cart">
+        <ShoppingCart color="#2D3436" />
+      </Link>
     </div>
   );
 };
