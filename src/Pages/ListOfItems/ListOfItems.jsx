@@ -5,30 +5,33 @@ import styles from "./ListOfItems.module.css";
 const ListOfItems = () => {
   const [productData, setProductData] = useState();
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://fakestoreapi.com/products", { mode: "cors" })
       .then((res) => res.json())
       .then((json) => setProductData(json))
-      .catch((error) => console.error(error))
+      .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, []);
-
-  if (loading) return <p>Loading...</p>; // Loadig screen for when fetching data
 
   return (
     <>
       <Header />
       <h1 className={styles.mainText}>List of All Items</h1>
       <ul className={styles.cardsContainer}>
-        {productData.map((product) => (
-          <li key={product.id}>
-            <ProductCard
-              name={product.title}
-              imgUrl={product.image}
-              price={product.price}
-            />
-          </li>
-        ))}
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          productData.map((product) => (
+            <li key={product.id}>
+              <ProductCard
+                name={product.title}
+                imgUrl={product.image}
+                price={product.price}
+              />
+            </li>
+          ))
+        )}
       </ul>
     </>
   );
