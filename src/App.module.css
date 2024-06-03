@@ -1,0 +1,16 @@
+body {
+  background-color: #dfe6e9;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  margin: 0 2%;
+  height: 100vh;
+}
+.mainText {
+  font-size: 3rem;
+  color: #2d3436;
+  font-family: Judson;
+  font-weight: 500;
+  border-bottom: 1px solid black;
+}
