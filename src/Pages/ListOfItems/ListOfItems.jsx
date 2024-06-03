@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Header from "../../Components/Header/Header";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import styles from "./ListOfItems.module.css";
+import { mainText } from "../../App.module.css";
+
 const ListOfItems = () => {
   const [productData, setProductData] = useState();
   const [loading, setLoading] = useState(true);
@@ -17,7 +19,7 @@ const ListOfItems = () => {
   return (
     <>
       <Header />
-      <h1 className={styles.mainText}>List of All Items</h1>
+      <h1 className={mainText}>List of All Items</h1>
       <ul className={styles.cardsContainer}>
         {loading ? (
           <p>Loading...</p>
