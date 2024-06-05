@@ -8,6 +8,8 @@ const ListOfItems = () => {
   const [productData, setProductData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cartItems, addCartItems] = useState(null);
+
   useEffect(() => {
     fetch("https://fakestoreapi.com/products", { mode: "cors" })
       .then((res) => res.json())
@@ -18,7 +20,7 @@ const ListOfItems = () => {
 
   return (
     <>
-      <Header />
+      <Header cartItems={"beep"} />
       <h1 className={mainText}>List of All Items</h1>
       <ul className={styles.cardsContainer}>
         {loading ? (
