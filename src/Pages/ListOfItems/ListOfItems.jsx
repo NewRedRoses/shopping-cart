@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import styles from "./ListOfItems.module.css";
 import { mainText } from "../../App.module.css";
+import { useOutletContext } from "react-router-dom";
 
-const ListOfItems = (cartItems, addCartItems) => {
+const ListOfItems = () => {
   const [productData, setProductData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cartItems, addCartItems] = useOutletContext();
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products", { mode: "cors" })
@@ -15,7 +17,6 @@ const ListOfItems = (cartItems, addCartItems) => {
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, []);
-
   return (
     <>
       <h1 className={mainText}>List of All Items</h1>
