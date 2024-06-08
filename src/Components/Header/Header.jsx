@@ -2,10 +2,10 @@ import Logo from "../Logo";
 import { ShoppingCart } from "lucide-react";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
-const Header = ({ cartItems, addCartItems }) => {
+const Header = ({ cartItems }) => {
   return (
     <div className={styles.header}>
-      <Link to="/">
+      <Link to="/" state={{ cartItems: cartItems }}>
         <Logo />
       </Link>
       <Link to="/Cart" state={{ cartItems: cartItems }}>
