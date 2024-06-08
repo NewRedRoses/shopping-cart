@@ -10,9 +10,8 @@ const Cart = () => {
     <>
       <Header />
       <h1 className={mainText}>All Items on Cart</h1>
-      {"cart items: " + cartItems}
       <ul className={styles.cartContainer}>
-        {dummyData.map((product) => (
+        {cartItems.map((product) => (
           <li key={product} className={styles.cartItem}>
             {product}
           </li>
