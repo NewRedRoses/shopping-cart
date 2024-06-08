@@ -8,8 +8,8 @@ const Cart = () => {
     <>
       <h1 className={mainText}>All Items on Cart</h1>
       <ul className={styles.cartContainer}>
-        {cartItems.map((product) => (
-          <li key={product} className={styles.cartItem}>
+        {cartItems.map((product, index) => (
+          <li key={index} className={styles.cartItem}>
             {product}
           </li>
         ))}
