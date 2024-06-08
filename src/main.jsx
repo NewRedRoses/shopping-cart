@@ -5,18 +5,25 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ListOfItems from "./Pages/ListOfItems/ListOfItems.jsx";
 import Cart from "./Pages/Cart/Cart.jsx";
+import Home from "./Pages/Home/Home.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "All_items",
-    element: <ListOfItems />,
-  },
-  {
-    path: "/Cart",
-    element: <Cart />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "All_items",
+        element: <ListOfItems />,
+      },
+      {
+        path: "/Cart",
+        element: <Cart />,
+      },
+    ],
   },
 ]);
 
