@@ -6,14 +6,21 @@ const Cart = () => {
   const location = useLocation();
   const { cartItems } = location.state;
   const updatedCartItems = addQuantityProp(cartItems);
-  console.log(updatedCartItems);
   return (
     <>
       <h1 className={mainText}>All Items on Cart</h1>
       <ul className={styles.cartContainer}>
         {updatedCartItems.map((product, index) => (
           <li key={index} className={styles.cartItem}>
-            {product.id} - {product.name} (Quantity: {product.quantity})
+            <div className={styles["cart-item-content"]}>
+              <img
+                className={styles["img-preview"]}
+                src={product.imgUrl}
+                alt=""
+              />
+              <span>{product.name}</span>
+              <span>{product.quantity}</span>
+            </div>
           </li>
         ))}
       </ul>
