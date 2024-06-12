@@ -13,13 +13,18 @@ const Cart = () => {
         {updatedCartItems.map((product, index) => (
           <li key={index} className={styles.cartItem}>
             <div className={styles["cart-item-content"]}>
-              <img
-                className={styles["img-preview"]}
-                src={product.imgUrl}
-                alt=""
-              />
-              <span>{product.name}</span>
-              <span>{product.quantity}</span>
+              <div className={styles.leftSide}>
+                <img
+                  className={styles["img-preview"]}
+                  src={product.imgUrl}
+                  alt=""
+                />
+                <span>{product.name}</span>
+              </div>
+
+              <span className={styles.quantityContainer}>
+                {product.quantity}
+              </span>
             </div>
           </li>
         ))}
