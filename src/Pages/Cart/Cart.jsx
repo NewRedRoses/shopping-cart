@@ -1,4 +1,5 @@
 import { mainText } from "../../App.module.css";
+import CustomInput from "../../Components/CustomInput/CustomInput";
 import styles from "./Cart.module.css";
 import { useLocation } from "react-router-dom";
 
@@ -23,7 +24,13 @@ const Cart = () => {
               </div>
 
               <span className={styles.quantityContainer}>
-                {product.quantity}
+                <CustomInput
+                  className={styles.quantityInput}
+                  type="number"
+                  startVal={product.quantity}
+                  min={1}
+                  max={100}
+                />
               </span>
             </div>
           </li>
