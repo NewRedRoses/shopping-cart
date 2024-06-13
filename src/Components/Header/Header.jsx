@@ -8,9 +8,13 @@ const Header = ({ cartItems }) => {
       <Link to="/" state={{ cartItems: cartItems }}>
         <Logo />
       </Link>
-      <Link to="/Cart" state={{ cartItems: cartItems }}>
-        <ShoppingCart color="#2D3436" />
-      </Link>
+
+      <div className={styles.rightContainer}>
+        <Link to="/Cart" state={{ cartItems: cartItems }}>
+          <ShoppingCart className color="#2D3436" />
+        </Link>
+        <span>({cartItems.length})</span>
+      </div>
     </div>
   );
 };
