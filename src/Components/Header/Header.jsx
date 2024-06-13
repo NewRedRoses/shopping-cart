@@ -13,7 +13,9 @@ const Header = ({ cartItems }) => {
         <Link to="/Cart" state={{ cartItems: cartItems }}>
           <ShoppingCart className color="#2D3436" />
         </Link>
-        <span>({cartItems.length})</span>
+        {cartItems.length != 0 && (
+          <span className={styles.cartCounter}>{cartItems.length}</span>
+        )}
       </div>
     </div>
   );
