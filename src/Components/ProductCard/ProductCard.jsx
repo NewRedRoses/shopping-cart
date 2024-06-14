@@ -21,7 +21,10 @@ const ProductCard = ({ id, imgUrl, name, price, cartItems, addCartItems }) => {
           bgColor="#2D3436"
           fgColor="#FFFFFF"
           onClick={() =>
-            addCartItems([...cartItems, { id: id, name: name, imgUrl: imgUrl }])
+            addCartItems([
+              ...cartItems,
+              { id: id, name: name, imgUrl: imgUrl, price: price },
+            ])
           }
         />
       </span>

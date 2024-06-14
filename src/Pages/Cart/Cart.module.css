@@ -37,3 +37,12 @@
   padding: 10px;
   border-radius: 5px;
 }
+.placeOrder {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: center;
+}
+.itemPrice {
+  font-weight: 400;
+}

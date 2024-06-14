@@ -2,13 +2,15 @@ import { mainText } from "../../App.module.css";
 import CustomInput from "../../Components/CustomInput/CustomInput";
 import styles from "./Cart.module.css";
 import { useLocation } from "react-router-dom";
+import Button from "../../Components/Button/Button.jsx";
 
 const Cart = () => {
   const location = useLocation();
   const { cartItems } = location.state;
   const updatedCartItems = addQuantityProp(cartItems);
+  const total = calcCartPriceTotal(updatedCartItems);
   return (
-    <>
+    <div>
       <h1 className={mainText}>All Items on Cart</h1>
       <ul className={styles.cartContainer}>
         {updatedCartItems.map((product, index) => (
@@ -21,6 +23,7 @@ const Cart = () => {
                   alt=""
                 />
                 <span>{product.name}</span>
+                <span className={styles.itemPrice}>${product.price}</span>
               </div>
 
               <span className={styles.quantityContainer}>
@@ -36,7 +39,13 @@ const Cart = () => {
           </li>
         ))}
       </ul>
-    </>
+      <div className={styles.placeOrder}>
+        <span>Total: ${total}</span>
+        <span>
+          <Button title="Place Order" />
+        </span>
+      </div>
+    </div>
   );
 };
 
@@ -80,6 +89,11 @@ const addQuantityProp = (cartItems) => {
   });
 
   return uniqueItems;
+};
+const calcCartPriceTotal = (cartItems) => {
+  let total = 0;
+  cartItems.map((cartItem) => (total += cartItem.price));
+  return total;
 };
 
 export default Cart;
