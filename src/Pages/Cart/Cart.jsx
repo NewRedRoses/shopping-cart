@@ -92,8 +92,14 @@ const addQuantityProp = (cartItems) => {
 };
 const calcCartPriceTotal = (cartItems) => {
   let total = 0;
-  cartItems.map((cartItem) => (total += cartItem.price));
-  return total;
+  cartItems.map((cartItem) => {
+    if (cartItem.quantity != 1) {
+      total += cartItem.price * cartItem.quantity;
+    } else {
+      total += cartItem.price;
+    }
+  });
+  return total.toFixed(2);
 };
 
 export default Cart;
