@@ -8,7 +8,7 @@ const ListOfItems = () => {
   const [productData, setProductData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [cartItems, addCartItems] = useOutletContext();
+  const [cartItems, setCartItems] = useOutletContext();
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products", { mode: "cors" })
@@ -32,7 +32,7 @@ const ListOfItems = () => {
                 imgUrl={product.image}
                 price={product.price}
                 cartItems={cartItems}
-                addCartItems={addCartItems}
+                setCartItems={setCartItems}
               />
             </li>
           ))

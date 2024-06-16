@@ -1,6 +1,6 @@
 import styles from "./ProductCard.module.css";
 import Button from "../Button/Button.jsx";
-const ProductCard = ({ id, imgUrl, name, price, cartItems, addCartItems }) => {
+const ProductCard = ({ id, imgUrl, name, price, cartItems, setCartItems }) => {
   const {
     cardContainer,
     imgContainer,
@@ -21,7 +21,7 @@ const ProductCard = ({ id, imgUrl, name, price, cartItems, addCartItems }) => {
           bgColor="#2D3436"
           fgColor="#FFFFFF"
           onClick={() =>
-            addCartItems([
+            setCartItems([
               ...cartItems,
               { id: id, name: name, imgUrl: imgUrl, price: price },
             ])

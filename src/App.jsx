@@ -3,11 +3,11 @@ import Header from "./Components/Header/Header";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 function App() {
-  const [cartItems, addCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
   return (
     <>
-      <Header cartItems={cartItems} addCartItems={addCartItems} />
-      <Outlet context={[cartItems, addCartItems]} />
+      <Header cartItems={cartItems} setCartItems={setCartItems} />
+      <Outlet context={[cartItems, setCartItems]} />
     </>
   );
 }
