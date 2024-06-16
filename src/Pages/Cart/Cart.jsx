@@ -1,14 +1,31 @@
+import { useState, useEffect } from "react";
 import { mainText } from "../../App.module.css";
 import CustomInput from "../../Components/CustomInput/CustomInput";
 import styles from "./Cart.module.css";
-import { useLocation } from "react-router-dom";
 import Button from "../../Components/Button/Button.jsx";
+import { useLocation } from "react-router-dom";
 
 const Cart = () => {
   const location = useLocation();
   const { cartItems } = location.state;
-  const updatedCartItems = addQuantityProp(cartItems);
-  const total = calcCartPriceTotal(updatedCartItems);
+
+  const [updatedCartItems, setUpdatedCartItems] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const initialCartItems = addQuantityProp(cartItems);
+    setUpdatedCartItems(initialCartItems);
+    setTotal(calcCartPriceTotal(initialCartItems));
+  }, [cartItems]);
+
+  const handleQuantityChange = (index, newQuantity) => {
+    const newCartItems = updatedCartItems.map((item, i) =>
+      i === index ? { ...item, quantity: newQuantity } : item,
+    );
+    setUpdatedCartItems(newCartItems);
+    setTotal(calcCartPriceTotal(newCartItems));
+  };
+
   return (
     <div>
       <h1 className={mainText}>All Items on Cart</h1>
@@ -30,9 +47,10 @@ const Cart = () => {
                 <CustomInput
                   className={styles.quantityInput}
                   type="number"
-                  startVal={product.quantity}
+                  value={product.quantity}
                   min={1}
                   max={100}
+                  setValue={(newValue) => handleQuantityChange(index, newValue)}
                 />
               </span>
             </div>
@@ -90,10 +108,11 @@ const addQuantityProp = (cartItems) => {
 
   return uniqueItems;
 };
+
 const calcCartPriceTotal = (cartItems) => {
   let total = 0;
-  cartItems.map((cartItem) => {
-    if (cartItem.quantity != 1) {
+  cartItems.forEach((cartItem) => {
+    if (cartItem.quantity !== 1) {
       total += cartItem.price * cartItem.quantity;
     } else {
       total += cartItem.price;

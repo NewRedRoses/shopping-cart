@@ -1,12 +1,11 @@
 import { useState } from "react";
 
-const CustomInput = ({ type = "text", startVal, min, max }) => {
-  const [value, setValue] = useState(startVal);
+const CustomInput = ({ type = "text", value, setValue, min, max }) => {
   return (
     <input
       type={type}
       value={value}
-      onChange={(event) => setValue(event.target.value)}
+      onChange={(event) => setValue(Number(event.target.value))}
       min={min}
       max={max}
     />
