@@ -29,7 +29,7 @@ const Cart = () => {
     <div>
       <h1 className={mainText}>All Items on Cart</h1>
       <ul className={styles.cartContainer}>
-        {updatedCartItems.map((product, index) => (
+        {cartItems.map((product, index) => (
           <li key={index} className={styles.cartItem}>
             <div className={styles["cart-item-content"]}>
               <div className={styles.leftSide}>
@@ -56,11 +56,11 @@ const Cart = () => {
                   alt="Delete cart item"
                   bgColor="#2d3436"
                   fgColor="#ffff"
-                  onClick={() =>
+                  onClick={() => {
                     setUpdatedCartItems(
                       updatedCartItems.filter((a) => a.id !== product.id),
-                    )
-                  }
+                    );
+                  }}
                 />
               </span>
             </div>
@@ -131,9 +131,4 @@ const calcCartPriceTotal = (cartItems) => {
   return total.toFixed(2);
 };
 
-const deleteCartItem = (id, cartItems) => {
-  cartItems.splice(id, 1);
-  console.log(cartItems);
-  // using the set usestate to delete, find a way to delete the array item
-};
 export default Cart;

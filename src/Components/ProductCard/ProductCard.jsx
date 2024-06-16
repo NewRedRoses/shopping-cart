@@ -20,12 +20,34 @@ const ProductCard = ({ id, imgUrl, name, price, cartItems, setCartItems }) => {
           title="Add to Cart"
           bgColor="#2D3436"
           fgColor="#FFFFFF"
-          onClick={() =>
-            setCartItems([
-              ...cartItems,
-              { id: id, name: name, imgUrl: imgUrl, price: price },
-            ])
-          }
+          onClick={() => {
+            const foundItemIndex = cartItems.findIndex(
+              (index) => index.id == id,
+            );
+            // if not found as a cart item...
+            if (foundItemIndex == -1) {
+              setCartItems([
+                ...cartItems,
+                {
+                  id: id,
+                  name: name,
+                  imgUrl: imgUrl,
+                  price: price,
+                  quantity: 1,
+                },
+              ]);
+            }
+            // if cart item exists, modify the quantity amount
+            else {
+              const newState = cartItems.map((item) => {
+                if (item.id == id) {
+                  return { ...item, quantity: item.quantity + 1 };
+                }
+                return item;
+              });
+              setCartItems(newState);
+            }
+          }}
         />
       </span>
     </div>
