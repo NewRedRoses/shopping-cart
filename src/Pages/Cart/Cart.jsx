@@ -4,7 +4,6 @@ import CustomInput from "../../Components/CustomInput/CustomInput";
 import styles from "./Cart.module.css";
 import Button from "../../Components/Button/Button.jsx";
 import { useLocation } from "react-router-dom";
-
 const Cart = () => {
   const location = useLocation();
   const { cartItems } = location.state;
@@ -42,7 +41,6 @@ const Cart = () => {
                 <span>{product.name}</span>
                 <span className={styles.itemPrice}>${product.price}</span>
               </div>
-
               <span className={styles.quantityContainer}>
                 <CustomInput
                   className={styles.quantityInput}
@@ -51,6 +49,18 @@ const Cart = () => {
                   min={1}
                   max={100}
                   setValue={(newValue) => handleQuantityChange(index, newValue)}
+                />
+                <Button
+                  title="x"
+                  className={styles.removeBtn}
+                  alt="Delete cart item"
+                  bgColor="#2d3436"
+                  fgColor="#ffff"
+                  onClick={() =>
+                    setUpdatedCartItems(
+                      updatedCartItems.filter((a) => a.id !== product.id),
+                    )
+                  }
                 />
               </span>
             </div>
@@ -121,4 +131,9 @@ const calcCartPriceTotal = (cartItems) => {
   return total.toFixed(2);
 };
 
+const deleteCartItem = (id, cartItems) => {
+  cartItems.splice(id, 1);
+  console.log(cartItems);
+  // using the set usestate to delete, find a way to delete the array item
+};
 export default Cart;

@@ -46,3 +46,7 @@
 .itemPrice {
   font-weight: 400;
 }
+.removeBtn {
+  height: fit-content;
+  background-color: red;
+}
