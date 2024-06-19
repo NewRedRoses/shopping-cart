@@ -3,25 +3,20 @@ import { mainText } from "../../App.module.css";
 import CustomInput from "../../Components/CustomInput/CustomInput";
 import styles from "./Cart.module.css";
 import Button from "../../Components/Button/Button.jsx";
-import { useLocation } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 const Cart = () => {
-  const location = useLocation();
-  const { cartItems } = location.state;
-
-  const [updatedCartItems, setUpdatedCartItems] = useState([]);
+  const [cartItems, setCartItems] = useOutletContext();
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const initialCartItems = addQuantityProp(cartItems);
-    setUpdatedCartItems(initialCartItems);
-    setTotal(calcCartPriceTotal(initialCartItems));
+    setTotal(calcCartPriceTotal(cartItems));
   }, [cartItems]);
 
   const handleQuantityChange = (index, newQuantity) => {
-    const newCartItems = updatedCartItems.map((item, i) =>
+    const newCartItems = cartItems.map((item, i) =>
       i === index ? { ...item, quantity: newQuantity } : item,
     );
-    setUpdatedCartItems(newCartItems);
+    setCartItems(newCartItems);
     setTotal(calcCartPriceTotal(newCartItems));
   };
 
@@ -48,7 +43,9 @@ const Cart = () => {
                   value={product.quantity}
                   min={1}
                   max={100}
-                  setValue={(newValue) => handleQuantityChange(index, newValue)}
+                  setValue={(newQuantity) =>
+                    handleQuantityChange(index, newQuantity)
+                  }
                 />
                 <Button
                   title="x"
@@ -57,9 +54,7 @@ const Cart = () => {
                   bgColor="#2d3436"
                   fgColor="#ffff"
                   onClick={() => {
-                    setUpdatedCartItems(
-                      updatedCartItems.filter((a) => a.id !== product.id),
-                    );
+                    setCartItems(cartItems.filter((a) => a.id !== product.id));
                   }}
                 />
               </span>
@@ -75,48 +70,6 @@ const Cart = () => {
       </div>
     </div>
   );
-};
-
-const countQuantity = (cartItems) => {
-  let quantityMap = {};
-  for (const item of cartItems) {
-    if (quantityMap[item.id]) {
-      quantityMap[item.id]++;
-    } else {
-      quantityMap[item.id] = 1;
-    }
-  }
-
-  let result = [];
-  for (const id in quantityMap) {
-    result.push({ id, quantity: quantityMap[id] });
-  }
-
-  return result;
-};
-
-const addQuantityProp = (cartItems) => {
-  const quantityList = countQuantity(cartItems);
-
-  const quantityMap = {};
-  for (const item of quantityList) {
-    quantityMap[item.id] = item.quantity;
-  }
-
-  const uniqueItems = [];
-  const seenIds = new Set();
-
-  cartItems.forEach((item) => {
-    if (!seenIds.has(item.id)) {
-      uniqueItems.push({
-        ...item,
-        quantity: quantityMap[item.id] || 0,
-      });
-      seenIds.add(item.id);
-    }
-  });
-
-  return uniqueItems;
 };
 
 const calcCartPriceTotal = (cartItems) => {
