@@ -6,12 +6,12 @@ const Header = ({ cartItems }) => {
   return (
     <div className={styles.header}>
       <Link to="/">
-        <Logo />
+        <Logo className={styles.logoIcon} />
       </Link>
 
       <div className={styles.rightContainer}>
         <Link to="/Cart">
-          <ShoppingCart className color="#2D3436" />
+          <ShoppingCart className={styles.cartIcon} color="#2D3436" />
         </Link>
         {cartItems.length != 0 && (
           <span className={styles.cartCounter}>{cartItems.length}</span>
