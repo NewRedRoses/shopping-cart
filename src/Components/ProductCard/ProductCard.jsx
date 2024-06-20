@@ -17,7 +17,6 @@ const ProductCard = ({ id, imgUrl, name, price, cartItems, setCartItems }) => {
       <span className={priceCartContainer}>
         <b className={priceContainer}>${price}</b>
         <Button
-          title="Add to Cart"
           bgColor="#2D3436"
           fgColor="#FFFFFF"
           onClick={() => {
@@ -48,7 +47,9 @@ const ProductCard = ({ id, imgUrl, name, price, cartItems, setCartItems }) => {
               setCartItems(newState);
             }
           }}
-        />
+        >
+          Add to Cart
+        </Button>
       </span>
     </div>
   );

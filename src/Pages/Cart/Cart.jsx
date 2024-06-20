@@ -4,6 +4,7 @@ import CustomInput from "../../Components/CustomInput/CustomInput";
 import styles from "./Cart.module.css";
 import Button from "../../Components/Button/Button.jsx";
 import { useOutletContext } from "react-router-dom";
+import { SquareX } from "lucide-react";
 const Cart = () => {
   const [cartItems, setCartItems] = useOutletContext();
   const [total, setTotal] = useState(0);
@@ -48,15 +49,14 @@ const Cart = () => {
                   }
                 />
                 <Button
-                  title="x"
                   className={styles.removeBtn}
                   alt="Delete cart item"
-                  bgColor="#2d3436"
-                  fgColor="#ffff"
                   onClick={() => {
                     setCartItems(cartItems.filter((a) => a.id !== product.id));
                   }}
-                />
+                >
+                  <SquareX />
+                </Button>
               </span>
             </div>
           </li>
@@ -65,7 +65,7 @@ const Cart = () => {
       <div className={styles.placeOrder}>
         <span>Total: ${total}</span>
         <span>
-          <Button title="Place Order" />
+          <Button>Place Order </Button>
         </span>
       </div>
     </div>
