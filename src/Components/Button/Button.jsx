@@ -1,5 +1,6 @@
 import styles from "./Button.module.css";
-const Button = ({ title, bgColor, fgColor, onClick, alt }) => {
+const Button = (props) => {
+  const { title, bgColor, fgColor, onClick, alt } = props;
   return (
     <>
       <button
@@ -9,7 +10,7 @@ const Button = ({ title, bgColor, fgColor, onClick, alt }) => {
         className={styles.btn}
         onClick={onClick}
       >
-        {title}
+        {props.children}
       </button>
     </>
   );
