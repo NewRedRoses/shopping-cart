@@ -34,7 +34,7 @@ const Cart = () => {
                   src={product.imgUrl}
                   alt=""
                 />
-                <span>{product.name}</span>
+                <span className={styles.cartTitle}>{product.name}</span>
                 <span className={styles.itemPrice}>${product.price}</span>
               </div>
               <span className={styles.quantityContainer}>
@@ -51,11 +51,12 @@ const Cart = () => {
                 <Button
                   className={styles.removeBtn}
                   alt="Delete cart item"
+                  style={{ backgroundColor: "#d63031", padding: "1px" }}
                   onClick={() => {
                     setCartItems(cartItems.filter((a) => a.id !== product.id));
                   }}
                 >
-                  <SquareX />
+                  <SquareX color="#fab1a0" />
                 </Button>
               </span>
             </div>

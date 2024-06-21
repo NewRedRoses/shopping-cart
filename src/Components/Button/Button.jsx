@@ -1,12 +1,12 @@
 import styles from "./Button.module.css";
 const Button = (props) => {
-  const { title, bgColor, fgColor, onClick, alt } = props;
+  const { onClick, alt, style } = props;
   return (
     <>
       <button
         type="button"
         alt={alt}
-        style={{ backgroundColor: bgColor, color: fgColor }}
+        style={style}
         className={styles.btn}
         onClick={onClick}
       >
