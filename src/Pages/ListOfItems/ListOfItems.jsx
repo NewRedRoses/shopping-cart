@@ -17,12 +17,21 @@ const ListOfItems = () => {
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, []);
+  if (error)
+    return (
+      <h1>
+        A network error was encountered: {error.message}...Please try again
+        later
+      </h1>
+    );
+
   return (
     <>
       <h1 className={mainText}>List of All Items</h1>
+
       <ul className={styles.cardsContainer}>
         {loading ? (
-          <p>Loading...</p>
+          <p>Loading cart items...</p>
         ) : (
           productData.map((product) => (
             <li key={product.id}>
