@@ -5,13 +5,13 @@
   /*border: 1px solid black;*/
   border-radius: 5px;
   width: 294px; /* placeholder */
-  height: 377px;
+  /* height: 377px; */
   padding: 10px;
 }
 .imgContainer {
-  flex: 1;
+  /* flex: 1;
   width: 300px;
-  height: auto;
+  height: fit-content; */
 }
 .productImg {
   height: 200px;
@@ -28,10 +28,15 @@ ul {
   color: #2d3436;
   font-family: Inter;
   font-weight: 600;
+  width: 20ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .priceCartContainer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .priceContainer {
   font-weight: 500;
