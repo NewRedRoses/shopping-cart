@@ -41,3 +41,10 @@ ul {
   font-family: Inter;
   color: #2d3436;
 }
+.addToCartBtn {
+  background-color: #2d3436;
+  color: #fff;
+}
+.addToCartBtn:hover {
+  background-color: #434d4f;
+}
