@@ -15,7 +15,7 @@ const Cart = () => {
 
   const handleQuantityChange = (index, newQuantity) => {
     const newCartItems = cartItems.map((item, i) =>
-      i === index ? { ...item, quantity: newQuantity } : item,
+      i === index ? { ...item, quantity: newQuantity } : item
     );
     setCartItems(newCartItems);
     setTotal(calcCartPriceTotal(newCartItems));
@@ -67,10 +67,9 @@ const Cart = () => {
                       <Button
                         className={styles.removeBtn}
                         alt="Delete cart item"
-                        style={{ backgroundColor: "#d63031", padding: "1px" }}
                         onClick={() => {
                           setCartItems(
-                            cartItems.filter((a) => a.id !== product.id),
+                            cartItems.filter((a) => a.id !== product.id)
                           );
                         }}
                       >
@@ -84,16 +83,7 @@ const Cart = () => {
             <div className={styles.placeOrderContainer}>
               <span className={styles.totalPrice}>Total: ${total}</span>
               <span>
-                <Button
-                  style={{
-                    backgroundColor: "#2d3436",
-                    color: "#fff",
-                    fontWeight: "bold",
-                  }}
-                  className={styles.placeOrderBtn}
-                >
-                  Place Order
-                </Button>
+                <Button className={styles.placeOrderBtn}>Place Order</Button>
               </span>
             </div>
           </div>
