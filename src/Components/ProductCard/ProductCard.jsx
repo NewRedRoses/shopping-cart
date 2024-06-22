@@ -17,11 +17,7 @@ const ProductCard = ({ id, imgUrl, name, price, cartItems, setCartItems }) => {
       <span className={priceCartContainer}>
         <b className={priceContainer}>${price}</b>
         <Button
-          style={{
-            backgroundColor: "#2d3436",
-            color: "#fff",
-            fontWeight: "bold",
-          }}
+          className={styles.addToCartBtn}
           onClick={() => {
             const foundItemIndex = cartItems.findIndex(
               (index) => index.id == id,
