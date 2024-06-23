@@ -15,7 +15,7 @@ const Cart = () => {
 
   const handleQuantityChange = (index, newQuantity) => {
     const newCartItems = cartItems.map((item, i) =>
-      i === index ? { ...item, quantity: newQuantity } : item
+      i === index ? { ...item, quantity: newQuantity } : item,
     );
     setCartItems(newCartItems);
     setTotal(calcCartPriceTotal(newCartItems));
@@ -50,10 +50,11 @@ const Cart = () => {
                         src={product.imgUrl}
                         alt=""
                       />
-                      <span className={styles.cartTitle}>{product.name}</span>
-                      <span className={styles.itemPrice}>${product.price}</span>
                     </div>
                     <span className={styles.quantityContainer}>
+                      <span className={styles.cartTitle}>{product.name}</span>
+                      <span className={styles.itemPrice}>${product.price}</span>
+
                       <CustomInput
                         className={styles.quantityInput}
                         type="number"
@@ -69,7 +70,7 @@ const Cart = () => {
                         alt="Delete cart item"
                         onClick={() => {
                           setCartItems(
-                            cartItems.filter((a) => a.id !== product.id)
+                            cartItems.filter((a) => a.id !== product.id),
                           );
                         }}
                       >

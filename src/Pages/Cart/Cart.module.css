@@ -8,7 +8,6 @@
   background-color: white;
   font-family: Inter, sans-serif;
   font-weight: 600;
-  height: 100px;
   max-width: 800px;
   padding: 14px;
   border-radius: 15px;
@@ -20,7 +19,6 @@
 }
 .cart-item-content {
   display: flex;
-  height: 100%;
   justify-content: space-between;
   align-items: center;
 }
@@ -82,4 +80,23 @@
   align-items: center;
   font-size: 1.5rem;
   font-family: Inter, sans-serif;
+}
+@media (max-width: 500px) {
+  .cartItem {
+    width: 300px;
+  }
+  .cart-item-content {
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+  }
+  .quantityContainer {
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    white-space: pre-line;
+  }
+  .cartTitle {
+    width: 300px;
+    text-wrap: wrap;
+  }
 }
